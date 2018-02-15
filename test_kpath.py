@@ -20,8 +20,10 @@ class TestKPath(TestCase):
                  ('G', 'H', 2)
                  ]
         network.add_weighted_edges_from(edges)
-        k = 3
-        kpaths = kpath.KPath.kpath(network, 'C', 'H', k)
-        print(kpaths)
-        self.assertEqual(k, len(kpath))
+        k = 8
+        path_list = kpath.kpath(network, 'C', 'H', k)
+        results = [('C', 'E', 'F', 'H'), ('C', 'E', 'G', 'H'), ('C', 'D', 'F', 'H'), ('C', 'E', 'F', 'G', 'H'),
+         ('C', 'E', 'D', 'F', 'H'), ('C', 'D', 'F', 'G', 'H'), ('C', 'E', 'D', 'F', 'G', 'H')]
+
+        self.assertListEqual(path_list, results)
 
